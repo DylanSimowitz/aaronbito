@@ -25,6 +25,7 @@ const Slider: React.FC<{
     ref
   ) => {
     const slideWidth = 800
+    const parent = useRef()
 
     return (
       <div
@@ -83,6 +84,7 @@ const Slider: React.FC<{
           className="sl-container"
           onMouseOver={() => togglePlaying(false)}
           onMouseLeave={() => togglePlaying(true)}
+          ref={parent}
         >
           <div className="sl-arrow" onClick={previous}>
             <Arrow />
