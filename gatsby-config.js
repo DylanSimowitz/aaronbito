@@ -1,12 +1,69 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `AJB Mixing`,
+    description: `description`,
+    author: `@author`,
+    siteUrl: `https://ajbmixing.com/`,
+    socialLinks: [
+      {
+        name: 'Soundcloud',
+        link: 'https://soundcloud.com/'
+      },
+      {
+        name: 'Instagram',
+        link: 'https://instagram.com/'
+      },
+      {
+        name: 'Twitter',
+        link: 'https://twitter.com/'
+      },
+    ],
+    menuLinks: [
+      {
+        name: 'About',
+        link: '#about'
+      },
+      {
+        name: 'Services',
+        link: '#services'
+      },
+      {
+        name: 'Testimonials',
+        link: '#testimonials'
+      },
+      {
+        name: 'Samples',
+        link: '#samples'
+      },
+      {
+        name: 'Contact',
+        link: '#contact'
+      },
+    ]
   },
   plugins: [
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `q8ym3w2kldd5`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-graphql-codegen`,
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /images\/svg/,
+        },
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -26,7 +83,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/svg/icon.svg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
