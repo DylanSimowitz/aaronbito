@@ -4,6 +4,12 @@ import { useForm } from "react-hook-form"
 import Heading from "./Heading"
 import ReCaptcha from "./CaptchaButton"
 
+function encode(data: any) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
 const Input: React.FC<{ as?: string }> = forwardRef(
   ({ as: Component = "input", children, ...props }, ref) => {
     return (
@@ -101,10 +107,17 @@ const Form: React.FC<{}> = ({ ...props }) => {
   })
   const onSubmit = data => {
     console.log(data)
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(data),
+    })
   }
 
   return (
     <form
+      data-netlify="true"
+      name="contact"
       onSubmit={handleSubmit(onSubmit)}
       css={css`
         max-width: 800px;
