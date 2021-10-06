@@ -38,7 +38,7 @@ const Input: React.FC<{ as?: string }> = forwardRef(
           textarea {
             border-radius: 16px;
             padding: 8px;
-            flex: 1;
+            width: 100%;
           }
           [type="checkbox"] {
             line-height: 2.1ex;
@@ -140,10 +140,11 @@ const Form: React.FC<{}> = ({ ...props }) => {
           display: inline-block;
           margin: 0;
         }
-        div {
+        .row {
           display: flex;
           flex-wrap: wrap;
           text-align: center;
+          align-items: center;
         }
       `}
     >
@@ -154,7 +155,7 @@ const Form: React.FC<{}> = ({ ...props }) => {
       >
         <p>Hi Aaron,</p>
       </div>
-      <div>
+      <div className="row">
         <p>To introduce myself, I'm</p>
         <Input
           type="text"
@@ -163,6 +164,7 @@ const Form: React.FC<{}> = ({ ...props }) => {
         />
       </div>
       <div
+        className="row"
         css={css`
           margin-bottom: 48px;
         `}
@@ -223,6 +225,7 @@ const Form: React.FC<{}> = ({ ...props }) => {
         <a href="https://policies.google.com/terms">Terms of Service</a> apply.
       </div>
       <div
+        className="row"
         css={css`
           justify-content: center;
           margin-top: 96px;
