@@ -1,10 +1,9 @@
 import { css } from "@emotion/react"
 import React from "react"
-import BlurryGradient from "../images/svg/blurry-gradient.svg"
 import Subheading from "./Subheading"
 import Container from "./Container"
 import ServiceCard from "./ServiceCard"
-import { withPrefix, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 const Services: React.FC<{}> = () => {
   const services = ["Mixing", "Combo", "Mastering"]

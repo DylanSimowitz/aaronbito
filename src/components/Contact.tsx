@@ -28,8 +28,11 @@ const Input: React.FC<{ as?: string }> = forwardRef(
             border-radius: 8px;
             display: inline-block;
             font-size: 1.15rem;
+            max-width: 210px;
+            height: 40px;
             &::placeholder {
               color: var(--color-accent);
+              opacity: 1;
               font-size: 1.15rem;
               font-weight: 400;
               text-transform: lowercase;
@@ -138,11 +141,11 @@ const Form: React.FC<{}> = ({ ...props }) => {
           letter-spacing: 0em;
           text-align: left;
           display: inline-block;
+          white-space: nowrap;
           margin: 0;
         }
         .row {
           display: flex;
-          flex-wrap: wrap;
           text-align: center;
           align-items: center;
         }
@@ -160,7 +163,7 @@ const Form: React.FC<{}> = ({ ...props }) => {
         <Input
           type="text"
           placeholder="Name"
-          {...register("Name", { required: true, maxLength: 80 })}
+          {...register("name", { required: true, maxLength: 80 })}
         />
       </div>
       <div
@@ -173,7 +176,7 @@ const Form: React.FC<{}> = ({ ...props }) => {
         <Input
           type="text"
           placeholder="Email"
-          {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
+          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         />
         <p>.</p>
       </div>
@@ -195,19 +198,15 @@ const Form: React.FC<{}> = ({ ...props }) => {
             width: 100%;
           `}
         >
-          <Input {...register} type="checkbox" value="mixing" id="mixing">
-            <label htmlFor="mixing">Mixing</label>
-          </Input>
-          <Input {...register} type="checkbox" value="mastering" id="mastering">
-            <label htmlFor="mastering">Mastering</label>
-          </Input>
-          <Input {...register} type="checkbox" value="other" id="other">
-            <label htmlFor="other">Other</label>
-          </Input>
+          {["mixing", "mastering", "other"].map(service => (
+            <Input id={service} key={service} type="checkbox" value={service} {...register("service")}>
+              <label htmlFor={service}>{service}</label>
+            </Input>
+          ))}
         </div>
       </div>
       <p>Some additional things to know</p>
-      <Input {...register("Other", {})} as="textarea" rows="12" />
+      <Input {...register("other", {})} as="textarea" rows="12" />
       <div
         css={css`
           font-size: 12px;

@@ -4,16 +4,19 @@ import { graphql, useStaticQuery } from "gatsby"
 import Container from "./Container"
 import SocialLinks from "./SocialLinks"
 import Logo from "../images/svg/logo.svg"
-import LayeredWaves from "../images/svg/layered-waves.svg"
 
 const Footer: React.FC<{}> = () => {
   const {
     site: {
       siteMetadata: { menuLinks },
     },
+    file: { publicURL: backgroundURL },
   } = useStaticQuery(
     graphql`
       query {
+        file(base: { eq: "layered-waves.svg" }) {
+          publicURL
+        }
         site {
           siteMetadata {
             menuLinks {
@@ -25,6 +28,7 @@ const Footer: React.FC<{}> = () => {
       }
     `
   )
+
   return (
     <footer
       css={css`
@@ -33,16 +37,10 @@ const Footer: React.FC<{}> = () => {
         flex-direction: column;
         justify-content: end;
         height: 646px;
+        background: url(${backgroundURL});
+        background-size: cover;
       `}
     >
-      <LayeredWaves
-        css={css`
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: -5;
-        `}
-      />
       <Container
         css={css`
           height: 300px;
