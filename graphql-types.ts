@@ -898,6 +898,7 @@ export type ContentfulTestimonial = ContentfulReference & ContentfulEntry & Node
   node_locale: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   image?: Maybe<ContentfulAsset>;
+  section__testimonials?: Maybe<Array<Maybe<ContentfulSectionTestimonials>>>;
   quote?: Maybe<ContentfulTestimonialQuoteTextNode>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
@@ -1000,6 +1001,7 @@ export type ContentfulSong = ContentfulReference & ContentfulEntry & Node & {
   artist?: Maybe<Scalars['String']>;
   artwork?: Maybe<ContentfulAsset>;
   track?: Maybe<ContentfulAsset>;
+  section__samples?: Maybe<Array<Maybe<ContentfulSectionSamples>>>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
@@ -1046,7 +1048,7 @@ export type ContentfulPage = ContentfulReference & ContentfulEntry & Node & {
   id: Scalars['ID'];
   node_locale: Scalars['String'];
   internalName?: Maybe<Scalars['String']>;
-  sections?: Maybe<Array<Maybe<ContentfulSectionAboutContentfulSectionHeroUnion>>>;
+  sections?: Maybe<Array<Maybe<ContentfulSectionAboutContentfulSectionContactContentfulSectionHeroContentfulSectionSamplesContentfulSectionServicesContentfulSectionTestimonialsUnion>>>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
@@ -1072,7 +1074,7 @@ export type ContentfulPageUpdatedAtArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-export type ContentfulSectionAboutContentfulSectionHeroUnion = ContentfulSectionAbout | ContentfulSectionHero;
+export type ContentfulSectionAboutContentfulSectionContactContentfulSectionHeroContentfulSectionSamplesContentfulSectionServicesContentfulSectionTestimonialsUnion = ContentfulSectionAbout | ContentfulSectionContact | ContentfulSectionHero | ContentfulSectionSamples | ContentfulSectionServices | ContentfulSectionTestimonials;
 
 export type ContentfulPageSys = {
   type?: Maybe<Scalars['String']>;
@@ -1196,8 +1198,9 @@ export type ContentfulSectionServices = ContentfulReference & ContentfulEntry & 
   contentful_id: Scalars['String'];
   id: Scalars['ID'];
   node_locale: Scalars['String'];
-  internalName?: Maybe<Scalars['String']>;
+  heading?: Maybe<Scalars['String']>;
   service?: Maybe<Array<Maybe<ContentfulService>>>;
+  page?: Maybe<Array<Maybe<ContentfulPage>>>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
@@ -1334,6 +1337,149 @@ export type ContentfulSocialMediaSysContentTypeSys = {
   id?: Maybe<Scalars['String']>;
 };
 
+export type ContentfulSectionTestimonials = ContentfulReference & ContentfulEntry & Node & {
+  contentful_id: Scalars['String'];
+  id: Scalars['ID'];
+  node_locale: Scalars['String'];
+  heading?: Maybe<Scalars['String']>;
+  testimonials?: Maybe<Array<Maybe<ContentfulTestimonial>>>;
+  page?: Maybe<Array<Maybe<ContentfulPage>>>;
+  spaceId?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulSectionTestimonialsSys>;
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+
+export type ContentfulSectionTestimonialsCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulSectionTestimonialsUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulSectionTestimonialsSys = {
+  type?: Maybe<Scalars['String']>;
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulSectionTestimonialsSysContentType>;
+};
+
+export type ContentfulSectionTestimonialsSysContentType = {
+  sys?: Maybe<ContentfulSectionTestimonialsSysContentTypeSys>;
+};
+
+export type ContentfulSectionTestimonialsSysContentTypeSys = {
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulSectionSamples = ContentfulReference & ContentfulEntry & Node & {
+  contentful_id: Scalars['String'];
+  id: Scalars['ID'];
+  node_locale: Scalars['String'];
+  heading?: Maybe<Scalars['String']>;
+  songs?: Maybe<Array<Maybe<ContentfulSong>>>;
+  page?: Maybe<Array<Maybe<ContentfulPage>>>;
+  spaceId?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulSectionSamplesSys>;
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+
+export type ContentfulSectionSamplesCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulSectionSamplesUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulSectionSamplesSys = {
+  type?: Maybe<Scalars['String']>;
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulSectionSamplesSysContentType>;
+};
+
+export type ContentfulSectionSamplesSysContentType = {
+  sys?: Maybe<ContentfulSectionSamplesSysContentTypeSys>;
+};
+
+export type ContentfulSectionSamplesSysContentTypeSys = {
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulSectionContact = ContentfulReference & ContentfulEntry & Node & {
+  contentful_id: Scalars['String'];
+  id: Scalars['ID'];
+  node_locale: Scalars['String'];
+  heading?: Maybe<Scalars['String']>;
+  page?: Maybe<Array<Maybe<ContentfulPage>>>;
+  spaceId?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulSectionContactSys>;
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+
+export type ContentfulSectionContactCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulSectionContactUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulSectionContactSys = {
+  type?: Maybe<Scalars['String']>;
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulSectionContactSysContentType>;
+};
+
+export type ContentfulSectionContactSysContentType = {
+  sys?: Maybe<ContentfulSectionContactSysContentTypeSys>;
+};
+
+export type ContentfulSectionContactSysContentTypeSys = {
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+};
+
 export type ContentfulTestimonialQuoteTextNode = Node & {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -1401,6 +1547,12 @@ export type Query = {
   allContentfulService: ContentfulServiceConnection;
   contentfulSocialMedia?: Maybe<ContentfulSocialMedia>;
   allContentfulSocialMedia: ContentfulSocialMediaConnection;
+  contentfulSectionTestimonials?: Maybe<ContentfulSectionTestimonials>;
+  allContentfulSectionTestimonials: ContentfulSectionTestimonialsConnection;
+  contentfulSectionSamples?: Maybe<ContentfulSectionSamples>;
+  allContentfulSectionSamples: ContentfulSectionSamplesConnection;
+  contentfulSectionContact?: Maybe<ContentfulSectionContact>;
+  allContentfulSectionContact: ContentfulSectionContactConnection;
   contentfulTestimonialQuoteTextNode?: Maybe<ContentfulTestimonialQuoteTextNode>;
   allContentfulTestimonialQuoteTextNode: ContentfulTestimonialQuoteTextNodeConnection;
   contentfulContentType?: Maybe<ContentfulContentType>;
@@ -1694,6 +1846,7 @@ export type QueryContentfulTestimonialArgs = {
   node_locale?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   image?: Maybe<ContentfulAssetFilterInput>;
+  section__testimonials?: Maybe<ContentfulSectionTestimonialsFilterListInput>;
   quote?: Maybe<ContentfulTestimonialQuoteTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
@@ -1748,6 +1901,7 @@ export type QueryContentfulSongArgs = {
   artist?: Maybe<StringQueryOperatorInput>;
   artwork?: Maybe<ContentfulAssetFilterInput>;
   track?: Maybe<ContentfulAssetFilterInput>;
+  section__samples?: Maybe<ContentfulSectionSamplesFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
@@ -1845,8 +1999,9 @@ export type QueryContentfulSectionServicesArgs = {
   contentful_id?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  internalName?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
   service?: Maybe<ContentfulServiceFilterListInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
@@ -1909,6 +2064,80 @@ export type QueryContentfulSocialMediaArgs = {
 export type QueryAllContentfulSocialMediaArgs = {
   filter?: Maybe<ContentfulSocialMediaFilterInput>;
   sort?: Maybe<ContentfulSocialMediaSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulSectionTestimonialsArgs = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
+  testimonials?: Maybe<ContentfulTestimonialFilterListInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSectionTestimonialsSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllContentfulSectionTestimonialsArgs = {
+  filter?: Maybe<ContentfulSectionTestimonialsFilterInput>;
+  sort?: Maybe<ContentfulSectionTestimonialsSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulSectionSamplesArgs = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
+  songs?: Maybe<ContentfulSongFilterListInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSectionSamplesSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllContentfulSectionSamplesArgs = {
+  filter?: Maybe<ContentfulSectionSamplesFilterInput>;
+  sort?: Maybe<ContentfulSectionSamplesSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulSectionContactArgs = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSectionContactSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllContentfulSectionContactArgs = {
+  filter?: Maybe<ContentfulSectionContactFilterInput>;
+  sort?: Maybe<ContentfulSectionContactSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -4696,6 +4925,49 @@ export type ContentfulAssetSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type ContentfulSectionTestimonialsFilterListInput = {
+  elemMatch?: Maybe<ContentfulSectionTestimonialsFilterInput>;
+};
+
+export type ContentfulSectionTestimonialsFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
+  testimonials?: Maybe<ContentfulTestimonialFilterListInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSectionTestimonialsSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+export type ContentfulTestimonialFilterListInput = {
+  elemMatch?: Maybe<ContentfulTestimonialFilterInput>;
+};
+
+export type ContentfulTestimonialFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  image?: Maybe<ContentfulAssetFilterInput>;
+  section__testimonials?: Maybe<ContentfulSectionTestimonialsFilterListInput>;
+  quote?: Maybe<ContentfulTestimonialQuoteTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulTestimonialSysFilterInput>;
+  childrenContentfulTestimonialQuoteTextNode?: Maybe<ContentfulTestimonialQuoteTextNodeFilterListInput>;
+  childContentfulTestimonialQuoteTextNode?: Maybe<ContentfulTestimonialQuoteTextNodeFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
 export type ContentfulTestimonialQuoteTextNodeFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -4727,6 +4999,56 @@ export type ContentfulTestimonialSysContentTypeSysFilterInput = {
 
 export type ContentfulTestimonialQuoteTextNodeFilterListInput = {
   elemMatch?: Maybe<ContentfulTestimonialQuoteTextNodeFilterInput>;
+};
+
+export type ContentfulPageFilterListInput = {
+  elemMatch?: Maybe<ContentfulPageFilterInput>;
+};
+
+export type ContentfulPageFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  internalName?: Maybe<StringQueryOperatorInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulPageSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+export type ContentfulPageSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulPageSysContentTypeFilterInput>;
+};
+
+export type ContentfulPageSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulPageSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulPageSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulSectionTestimonialsSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulSectionTestimonialsSysContentTypeFilterInput>;
+};
+
+export type ContentfulSectionTestimonialsSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulSectionTestimonialsSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulSectionTestimonialsSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ContentfulTestimonialConnection = {
@@ -4854,6 +5176,130 @@ export type ContentfulTestimonialFieldsEnum =
   | 'image___internal___mediaType'
   | 'image___internal___owner'
   | 'image___internal___type'
+  | 'section__testimonials'
+  | 'section__testimonials___contentful_id'
+  | 'section__testimonials___id'
+  | 'section__testimonials___node_locale'
+  | 'section__testimonials___heading'
+  | 'section__testimonials___testimonials'
+  | 'section__testimonials___testimonials___contentful_id'
+  | 'section__testimonials___testimonials___id'
+  | 'section__testimonials___testimonials___node_locale'
+  | 'section__testimonials___testimonials___name'
+  | 'section__testimonials___testimonials___image___contentful_id'
+  | 'section__testimonials___testimonials___image___id'
+  | 'section__testimonials___testimonials___image___spaceId'
+  | 'section__testimonials___testimonials___image___createdAt'
+  | 'section__testimonials___testimonials___image___updatedAt'
+  | 'section__testimonials___testimonials___image___title'
+  | 'section__testimonials___testimonials___image___description'
+  | 'section__testimonials___testimonials___image___node_locale'
+  | 'section__testimonials___testimonials___image___gatsbyImageData'
+  | 'section__testimonials___testimonials___image___children'
+  | 'section__testimonials___testimonials___section__testimonials'
+  | 'section__testimonials___testimonials___section__testimonials___contentful_id'
+  | 'section__testimonials___testimonials___section__testimonials___id'
+  | 'section__testimonials___testimonials___section__testimonials___node_locale'
+  | 'section__testimonials___testimonials___section__testimonials___heading'
+  | 'section__testimonials___testimonials___section__testimonials___testimonials'
+  | 'section__testimonials___testimonials___section__testimonials___page'
+  | 'section__testimonials___testimonials___section__testimonials___spaceId'
+  | 'section__testimonials___testimonials___section__testimonials___createdAt'
+  | 'section__testimonials___testimonials___section__testimonials___updatedAt'
+  | 'section__testimonials___testimonials___section__testimonials___children'
+  | 'section__testimonials___testimonials___quote___id'
+  | 'section__testimonials___testimonials___quote___children'
+  | 'section__testimonials___testimonials___quote___quote'
+  | 'section__testimonials___testimonials___spaceId'
+  | 'section__testimonials___testimonials___createdAt'
+  | 'section__testimonials___testimonials___updatedAt'
+  | 'section__testimonials___testimonials___sys___type'
+  | 'section__testimonials___testimonials___sys___revision'
+  | 'section__testimonials___testimonials___childrenContentfulTestimonialQuoteTextNode'
+  | 'section__testimonials___testimonials___childrenContentfulTestimonialQuoteTextNode___id'
+  | 'section__testimonials___testimonials___childrenContentfulTestimonialQuoteTextNode___children'
+  | 'section__testimonials___testimonials___childrenContentfulTestimonialQuoteTextNode___quote'
+  | 'section__testimonials___testimonials___childContentfulTestimonialQuoteTextNode___id'
+  | 'section__testimonials___testimonials___childContentfulTestimonialQuoteTextNode___children'
+  | 'section__testimonials___testimonials___childContentfulTestimonialQuoteTextNode___quote'
+  | 'section__testimonials___testimonials___parent___id'
+  | 'section__testimonials___testimonials___parent___children'
+  | 'section__testimonials___testimonials___children'
+  | 'section__testimonials___testimonials___children___id'
+  | 'section__testimonials___testimonials___children___children'
+  | 'section__testimonials___testimonials___internal___content'
+  | 'section__testimonials___testimonials___internal___contentDigest'
+  | 'section__testimonials___testimonials___internal___description'
+  | 'section__testimonials___testimonials___internal___fieldOwners'
+  | 'section__testimonials___testimonials___internal___ignoreType'
+  | 'section__testimonials___testimonials___internal___mediaType'
+  | 'section__testimonials___testimonials___internal___owner'
+  | 'section__testimonials___testimonials___internal___type'
+  | 'section__testimonials___page'
+  | 'section__testimonials___page___contentful_id'
+  | 'section__testimonials___page___id'
+  | 'section__testimonials___page___node_locale'
+  | 'section__testimonials___page___internalName'
+  | 'section__testimonials___page___spaceId'
+  | 'section__testimonials___page___createdAt'
+  | 'section__testimonials___page___updatedAt'
+  | 'section__testimonials___page___sys___type'
+  | 'section__testimonials___page___sys___revision'
+  | 'section__testimonials___page___parent___id'
+  | 'section__testimonials___page___parent___children'
+  | 'section__testimonials___page___children'
+  | 'section__testimonials___page___children___id'
+  | 'section__testimonials___page___children___children'
+  | 'section__testimonials___page___internal___content'
+  | 'section__testimonials___page___internal___contentDigest'
+  | 'section__testimonials___page___internal___description'
+  | 'section__testimonials___page___internal___fieldOwners'
+  | 'section__testimonials___page___internal___ignoreType'
+  | 'section__testimonials___page___internal___mediaType'
+  | 'section__testimonials___page___internal___owner'
+  | 'section__testimonials___page___internal___type'
+  | 'section__testimonials___spaceId'
+  | 'section__testimonials___createdAt'
+  | 'section__testimonials___updatedAt'
+  | 'section__testimonials___sys___type'
+  | 'section__testimonials___sys___revision'
+  | 'section__testimonials___parent___id'
+  | 'section__testimonials___parent___parent___id'
+  | 'section__testimonials___parent___parent___children'
+  | 'section__testimonials___parent___children'
+  | 'section__testimonials___parent___children___id'
+  | 'section__testimonials___parent___children___children'
+  | 'section__testimonials___parent___internal___content'
+  | 'section__testimonials___parent___internal___contentDigest'
+  | 'section__testimonials___parent___internal___description'
+  | 'section__testimonials___parent___internal___fieldOwners'
+  | 'section__testimonials___parent___internal___ignoreType'
+  | 'section__testimonials___parent___internal___mediaType'
+  | 'section__testimonials___parent___internal___owner'
+  | 'section__testimonials___parent___internal___type'
+  | 'section__testimonials___children'
+  | 'section__testimonials___children___id'
+  | 'section__testimonials___children___parent___id'
+  | 'section__testimonials___children___parent___children'
+  | 'section__testimonials___children___children'
+  | 'section__testimonials___children___children___id'
+  | 'section__testimonials___children___children___children'
+  | 'section__testimonials___children___internal___content'
+  | 'section__testimonials___children___internal___contentDigest'
+  | 'section__testimonials___children___internal___description'
+  | 'section__testimonials___children___internal___fieldOwners'
+  | 'section__testimonials___children___internal___ignoreType'
+  | 'section__testimonials___children___internal___mediaType'
+  | 'section__testimonials___children___internal___owner'
+  | 'section__testimonials___children___internal___type'
+  | 'section__testimonials___internal___content'
+  | 'section__testimonials___internal___contentDigest'
+  | 'section__testimonials___internal___description'
+  | 'section__testimonials___internal___fieldOwners'
+  | 'section__testimonials___internal___ignoreType'
+  | 'section__testimonials___internal___mediaType'
+  | 'section__testimonials___internal___owner'
+  | 'section__testimonials___internal___type'
   | 'quote___id'
   | 'quote___parent___id'
   | 'quote___parent___parent___id'
@@ -5108,24 +5554,6 @@ export type ContentfulTestimonialGroupConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   field: ContentfulTestimonialFieldsEnum;
-};
-
-export type ContentfulTestimonialFilterInput = {
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  node_locale?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<ContentfulAssetFilterInput>;
-  quote?: Maybe<ContentfulTestimonialQuoteTextNodeFilterInput>;
-  spaceId?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  sys?: Maybe<ContentfulTestimonialSysFilterInput>;
-  childrenContentfulTestimonialQuoteTextNode?: Maybe<ContentfulTestimonialQuoteTextNodeFilterListInput>;
-  childContentfulTestimonialQuoteTextNode?: Maybe<ContentfulTestimonialQuoteTextNodeFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
 };
 
 export type ContentfulTestimonialSortInput = {
@@ -5476,6 +5904,48 @@ export type ContentfulSocialLinkSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type ContentfulSectionSamplesFilterListInput = {
+  elemMatch?: Maybe<ContentfulSectionSamplesFilterInput>;
+};
+
+export type ContentfulSectionSamplesFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
+  songs?: Maybe<ContentfulSongFilterListInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSectionSamplesSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+export type ContentfulSongFilterListInput = {
+  elemMatch?: Maybe<ContentfulSongFilterInput>;
+};
+
+export type ContentfulSongFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  artist?: Maybe<StringQueryOperatorInput>;
+  artwork?: Maybe<ContentfulAssetFilterInput>;
+  track?: Maybe<ContentfulAssetFilterInput>;
+  section__samples?: Maybe<ContentfulSectionSamplesFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSongSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
 export type ContentfulSongSysFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
   revision?: Maybe<IntQueryOperatorInput>;
@@ -5487,6 +5957,22 @@ export type ContentfulSongSysContentTypeFilterInput = {
 };
 
 export type ContentfulSongSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulSectionSamplesSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulSectionSamplesSysContentTypeFilterInput>;
+};
+
+export type ContentfulSectionSamplesSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulSectionSamplesSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulSectionSamplesSysContentTypeSysFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
   linkType?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -5693,6 +6179,131 @@ export type ContentfulSongFieldsEnum =
   | 'track___internal___mediaType'
   | 'track___internal___owner'
   | 'track___internal___type'
+  | 'section__samples'
+  | 'section__samples___contentful_id'
+  | 'section__samples___id'
+  | 'section__samples___node_locale'
+  | 'section__samples___heading'
+  | 'section__samples___songs'
+  | 'section__samples___songs___contentful_id'
+  | 'section__samples___songs___id'
+  | 'section__samples___songs___node_locale'
+  | 'section__samples___songs___title'
+  | 'section__samples___songs___artist'
+  | 'section__samples___songs___artwork___contentful_id'
+  | 'section__samples___songs___artwork___id'
+  | 'section__samples___songs___artwork___spaceId'
+  | 'section__samples___songs___artwork___createdAt'
+  | 'section__samples___songs___artwork___updatedAt'
+  | 'section__samples___songs___artwork___title'
+  | 'section__samples___songs___artwork___description'
+  | 'section__samples___songs___artwork___node_locale'
+  | 'section__samples___songs___artwork___gatsbyImageData'
+  | 'section__samples___songs___artwork___children'
+  | 'section__samples___songs___track___contentful_id'
+  | 'section__samples___songs___track___id'
+  | 'section__samples___songs___track___spaceId'
+  | 'section__samples___songs___track___createdAt'
+  | 'section__samples___songs___track___updatedAt'
+  | 'section__samples___songs___track___title'
+  | 'section__samples___songs___track___description'
+  | 'section__samples___songs___track___node_locale'
+  | 'section__samples___songs___track___gatsbyImageData'
+  | 'section__samples___songs___track___children'
+  | 'section__samples___songs___section__samples'
+  | 'section__samples___songs___section__samples___contentful_id'
+  | 'section__samples___songs___section__samples___id'
+  | 'section__samples___songs___section__samples___node_locale'
+  | 'section__samples___songs___section__samples___heading'
+  | 'section__samples___songs___section__samples___songs'
+  | 'section__samples___songs___section__samples___page'
+  | 'section__samples___songs___section__samples___spaceId'
+  | 'section__samples___songs___section__samples___createdAt'
+  | 'section__samples___songs___section__samples___updatedAt'
+  | 'section__samples___songs___section__samples___children'
+  | 'section__samples___songs___spaceId'
+  | 'section__samples___songs___createdAt'
+  | 'section__samples___songs___updatedAt'
+  | 'section__samples___songs___sys___type'
+  | 'section__samples___songs___sys___revision'
+  | 'section__samples___songs___parent___id'
+  | 'section__samples___songs___parent___children'
+  | 'section__samples___songs___children'
+  | 'section__samples___songs___children___id'
+  | 'section__samples___songs___children___children'
+  | 'section__samples___songs___internal___content'
+  | 'section__samples___songs___internal___contentDigest'
+  | 'section__samples___songs___internal___description'
+  | 'section__samples___songs___internal___fieldOwners'
+  | 'section__samples___songs___internal___ignoreType'
+  | 'section__samples___songs___internal___mediaType'
+  | 'section__samples___songs___internal___owner'
+  | 'section__samples___songs___internal___type'
+  | 'section__samples___page'
+  | 'section__samples___page___contentful_id'
+  | 'section__samples___page___id'
+  | 'section__samples___page___node_locale'
+  | 'section__samples___page___internalName'
+  | 'section__samples___page___spaceId'
+  | 'section__samples___page___createdAt'
+  | 'section__samples___page___updatedAt'
+  | 'section__samples___page___sys___type'
+  | 'section__samples___page___sys___revision'
+  | 'section__samples___page___parent___id'
+  | 'section__samples___page___parent___children'
+  | 'section__samples___page___children'
+  | 'section__samples___page___children___id'
+  | 'section__samples___page___children___children'
+  | 'section__samples___page___internal___content'
+  | 'section__samples___page___internal___contentDigest'
+  | 'section__samples___page___internal___description'
+  | 'section__samples___page___internal___fieldOwners'
+  | 'section__samples___page___internal___ignoreType'
+  | 'section__samples___page___internal___mediaType'
+  | 'section__samples___page___internal___owner'
+  | 'section__samples___page___internal___type'
+  | 'section__samples___spaceId'
+  | 'section__samples___createdAt'
+  | 'section__samples___updatedAt'
+  | 'section__samples___sys___type'
+  | 'section__samples___sys___revision'
+  | 'section__samples___parent___id'
+  | 'section__samples___parent___parent___id'
+  | 'section__samples___parent___parent___children'
+  | 'section__samples___parent___children'
+  | 'section__samples___parent___children___id'
+  | 'section__samples___parent___children___children'
+  | 'section__samples___parent___internal___content'
+  | 'section__samples___parent___internal___contentDigest'
+  | 'section__samples___parent___internal___description'
+  | 'section__samples___parent___internal___fieldOwners'
+  | 'section__samples___parent___internal___ignoreType'
+  | 'section__samples___parent___internal___mediaType'
+  | 'section__samples___parent___internal___owner'
+  | 'section__samples___parent___internal___type'
+  | 'section__samples___children'
+  | 'section__samples___children___id'
+  | 'section__samples___children___parent___id'
+  | 'section__samples___children___parent___children'
+  | 'section__samples___children___children'
+  | 'section__samples___children___children___id'
+  | 'section__samples___children___children___children'
+  | 'section__samples___children___internal___content'
+  | 'section__samples___children___internal___contentDigest'
+  | 'section__samples___children___internal___description'
+  | 'section__samples___children___internal___fieldOwners'
+  | 'section__samples___children___internal___ignoreType'
+  | 'section__samples___children___internal___mediaType'
+  | 'section__samples___children___internal___owner'
+  | 'section__samples___children___internal___type'
+  | 'section__samples___internal___content'
+  | 'section__samples___internal___contentDigest'
+  | 'section__samples___internal___description'
+  | 'section__samples___internal___fieldOwners'
+  | 'section__samples___internal___ignoreType'
+  | 'section__samples___internal___mediaType'
+  | 'section__samples___internal___owner'
+  | 'section__samples___internal___type'
   | 'spaceId'
   | 'createdAt'
   | 'updatedAt'
@@ -5828,42 +6439,9 @@ export type ContentfulSongGroupConnectionGroupArgs = {
   field: ContentfulSongFieldsEnum;
 };
 
-export type ContentfulSongFilterInput = {
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  node_locale?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  artist?: Maybe<StringQueryOperatorInput>;
-  artwork?: Maybe<ContentfulAssetFilterInput>;
-  track?: Maybe<ContentfulAssetFilterInput>;
-  spaceId?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  sys?: Maybe<ContentfulSongSysFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
 export type ContentfulSongSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulSongFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type ContentfulPageSysFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  revision?: Maybe<IntQueryOperatorInput>;
-  contentType?: Maybe<ContentfulPageSysContentTypeFilterInput>;
-};
-
-export type ContentfulPageSysContentTypeFilterInput = {
-  sys?: Maybe<ContentfulPageSysContentTypeSysFilterInput>;
-};
-
-export type ContentfulPageSysContentTypeSysFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  linkType?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ContentfulPageConnection = {
@@ -6051,20 +6629,6 @@ export type ContentfulPageGroupConnectionGroupArgs = {
   field: ContentfulPageFieldsEnum;
 };
 
-export type ContentfulPageFilterInput = {
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  node_locale?: Maybe<StringQueryOperatorInput>;
-  internalName?: Maybe<StringQueryOperatorInput>;
-  spaceId?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  sys?: Maybe<ContentfulPageSysFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
 export type ContentfulPageSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulPageFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
@@ -6072,10 +6636,6 @@ export type ContentfulPageSortInput = {
 
 export type ContentfulSectionAboutDescriptionFilterInput = {
   raw?: Maybe<StringQueryOperatorInput>;
-};
-
-export type ContentfulPageFilterListInput = {
-  elemMatch?: Maybe<ContentfulPageFilterInput>;
 };
 
 export type ContentfulSectionAboutSysFilterInput = {
@@ -6724,8 +7284,9 @@ export type ContentfulSectionServicesFilterInput = {
   contentful_id?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  internalName?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
   service?: Maybe<ContentfulServiceFilterListInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
@@ -6816,7 +7377,7 @@ export type ContentfulSectionServicesFieldsEnum =
   | 'contentful_id'
   | 'id'
   | 'node_locale'
-  | 'internalName'
+  | 'heading'
   | 'service'
   | 'service___contentful_id'
   | 'service___id'
@@ -6827,7 +7388,7 @@ export type ContentfulSectionServicesFieldsEnum =
   | 'service___section__services___contentful_id'
   | 'service___section__services___id'
   | 'service___section__services___node_locale'
-  | 'service___section__services___internalName'
+  | 'service___section__services___heading'
   | 'service___section__services___service'
   | 'service___section__services___service___contentful_id'
   | 'service___section__services___service___id'
@@ -6839,6 +7400,15 @@ export type ContentfulSectionServicesFieldsEnum =
   | 'service___section__services___service___createdAt'
   | 'service___section__services___service___updatedAt'
   | 'service___section__services___service___children'
+  | 'service___section__services___page'
+  | 'service___section__services___page___contentful_id'
+  | 'service___section__services___page___id'
+  | 'service___section__services___page___node_locale'
+  | 'service___section__services___page___internalName'
+  | 'service___section__services___page___spaceId'
+  | 'service___section__services___page___createdAt'
+  | 'service___section__services___page___updatedAt'
+  | 'service___section__services___page___children'
   | 'service___section__services___spaceId'
   | 'service___section__services___createdAt'
   | 'service___section__services___updatedAt'
@@ -6899,6 +7469,53 @@ export type ContentfulSectionServicesFieldsEnum =
   | 'service___internal___mediaType'
   | 'service___internal___owner'
   | 'service___internal___type'
+  | 'page'
+  | 'page___contentful_id'
+  | 'page___id'
+  | 'page___node_locale'
+  | 'page___internalName'
+  | 'page___spaceId'
+  | 'page___createdAt'
+  | 'page___updatedAt'
+  | 'page___sys___type'
+  | 'page___sys___revision'
+  | 'page___parent___id'
+  | 'page___parent___parent___id'
+  | 'page___parent___parent___children'
+  | 'page___parent___children'
+  | 'page___parent___children___id'
+  | 'page___parent___children___children'
+  | 'page___parent___internal___content'
+  | 'page___parent___internal___contentDigest'
+  | 'page___parent___internal___description'
+  | 'page___parent___internal___fieldOwners'
+  | 'page___parent___internal___ignoreType'
+  | 'page___parent___internal___mediaType'
+  | 'page___parent___internal___owner'
+  | 'page___parent___internal___type'
+  | 'page___children'
+  | 'page___children___id'
+  | 'page___children___parent___id'
+  | 'page___children___parent___children'
+  | 'page___children___children'
+  | 'page___children___children___id'
+  | 'page___children___children___children'
+  | 'page___children___internal___content'
+  | 'page___children___internal___contentDigest'
+  | 'page___children___internal___description'
+  | 'page___children___internal___fieldOwners'
+  | 'page___children___internal___ignoreType'
+  | 'page___children___internal___mediaType'
+  | 'page___children___internal___owner'
+  | 'page___children___internal___type'
+  | 'page___internal___content'
+  | 'page___internal___contentDigest'
+  | 'page___internal___description'
+  | 'page___internal___fieldOwners'
+  | 'page___internal___ignoreType'
+  | 'page___internal___mediaType'
+  | 'page___internal___owner'
+  | 'page___internal___type'
   | 'spaceId'
   | 'createdAt'
   | 'updatedAt'
@@ -7094,7 +7711,7 @@ export type ContentfulServiceFieldsEnum =
   | 'section__services___contentful_id'
   | 'section__services___id'
   | 'section__services___node_locale'
-  | 'section__services___internalName'
+  | 'section__services___heading'
   | 'section__services___service'
   | 'section__services___service___contentful_id'
   | 'section__services___service___id'
@@ -7105,8 +7722,9 @@ export type ContentfulServiceFieldsEnum =
   | 'section__services___service___section__services___contentful_id'
   | 'section__services___service___section__services___id'
   | 'section__services___service___section__services___node_locale'
-  | 'section__services___service___section__services___internalName'
+  | 'section__services___service___section__services___heading'
   | 'section__services___service___section__services___service'
+  | 'section__services___service___section__services___page'
   | 'section__services___service___section__services___spaceId'
   | 'section__services___service___section__services___createdAt'
   | 'section__services___service___section__services___updatedAt'
@@ -7129,6 +7747,29 @@ export type ContentfulServiceFieldsEnum =
   | 'section__services___service___internal___mediaType'
   | 'section__services___service___internal___owner'
   | 'section__services___service___internal___type'
+  | 'section__services___page'
+  | 'section__services___page___contentful_id'
+  | 'section__services___page___id'
+  | 'section__services___page___node_locale'
+  | 'section__services___page___internalName'
+  | 'section__services___page___spaceId'
+  | 'section__services___page___createdAt'
+  | 'section__services___page___updatedAt'
+  | 'section__services___page___sys___type'
+  | 'section__services___page___sys___revision'
+  | 'section__services___page___parent___id'
+  | 'section__services___page___parent___children'
+  | 'section__services___page___children'
+  | 'section__services___page___children___id'
+  | 'section__services___page___children___children'
+  | 'section__services___page___internal___content'
+  | 'section__services___page___internal___contentDigest'
+  | 'section__services___page___internal___description'
+  | 'section__services___page___internal___fieldOwners'
+  | 'section__services___page___internal___ignoreType'
+  | 'section__services___page___internal___mediaType'
+  | 'section__services___page___internal___owner'
+  | 'section__services___page___internal___type'
   | 'section__services___spaceId'
   | 'section__services___createdAt'
   | 'section__services___updatedAt'
@@ -7583,6 +8224,1128 @@ export type ContentfulSocialMediaSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type ContentfulSectionTestimonialsConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulSectionTestimonialsEdge>;
+  nodes: Array<ContentfulSectionTestimonials>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ContentfulSectionTestimonialsGroupConnection>;
+};
+
+
+export type ContentfulSectionTestimonialsConnectionDistinctArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsConnectionMaxArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsConnectionMinArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsConnectionSumArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+export type ContentfulSectionTestimonialsEdge = {
+  next?: Maybe<ContentfulSectionTestimonials>;
+  node: ContentfulSectionTestimonials;
+  previous?: Maybe<ContentfulSectionTestimonials>;
+};
+
+export type ContentfulSectionTestimonialsFieldsEnum =
+  | 'contentful_id'
+  | 'id'
+  | 'node_locale'
+  | 'heading'
+  | 'testimonials'
+  | 'testimonials___contentful_id'
+  | 'testimonials___id'
+  | 'testimonials___node_locale'
+  | 'testimonials___name'
+  | 'testimonials___image___contentful_id'
+  | 'testimonials___image___id'
+  | 'testimonials___image___spaceId'
+  | 'testimonials___image___createdAt'
+  | 'testimonials___image___updatedAt'
+  | 'testimonials___image___file___url'
+  | 'testimonials___image___file___fileName'
+  | 'testimonials___image___file___contentType'
+  | 'testimonials___image___title'
+  | 'testimonials___image___description'
+  | 'testimonials___image___node_locale'
+  | 'testimonials___image___sys___type'
+  | 'testimonials___image___sys___revision'
+  | 'testimonials___image___fixed___base64'
+  | 'testimonials___image___fixed___tracedSVG'
+  | 'testimonials___image___fixed___aspectRatio'
+  | 'testimonials___image___fixed___width'
+  | 'testimonials___image___fixed___height'
+  | 'testimonials___image___fixed___src'
+  | 'testimonials___image___fixed___srcSet'
+  | 'testimonials___image___fixed___srcWebp'
+  | 'testimonials___image___fixed___srcSetWebp'
+  | 'testimonials___image___fluid___base64'
+  | 'testimonials___image___fluid___tracedSVG'
+  | 'testimonials___image___fluid___aspectRatio'
+  | 'testimonials___image___fluid___src'
+  | 'testimonials___image___fluid___srcSet'
+  | 'testimonials___image___fluid___srcWebp'
+  | 'testimonials___image___fluid___srcSetWebp'
+  | 'testimonials___image___fluid___sizes'
+  | 'testimonials___image___gatsbyImageData'
+  | 'testimonials___image___resize___base64'
+  | 'testimonials___image___resize___tracedSVG'
+  | 'testimonials___image___resize___src'
+  | 'testimonials___image___resize___width'
+  | 'testimonials___image___resize___height'
+  | 'testimonials___image___resize___aspectRatio'
+  | 'testimonials___image___parent___id'
+  | 'testimonials___image___parent___children'
+  | 'testimonials___image___children'
+  | 'testimonials___image___children___id'
+  | 'testimonials___image___children___children'
+  | 'testimonials___image___internal___content'
+  | 'testimonials___image___internal___contentDigest'
+  | 'testimonials___image___internal___description'
+  | 'testimonials___image___internal___fieldOwners'
+  | 'testimonials___image___internal___ignoreType'
+  | 'testimonials___image___internal___mediaType'
+  | 'testimonials___image___internal___owner'
+  | 'testimonials___image___internal___type'
+  | 'testimonials___section__testimonials'
+  | 'testimonials___section__testimonials___contentful_id'
+  | 'testimonials___section__testimonials___id'
+  | 'testimonials___section__testimonials___node_locale'
+  | 'testimonials___section__testimonials___heading'
+  | 'testimonials___section__testimonials___testimonials'
+  | 'testimonials___section__testimonials___testimonials___contentful_id'
+  | 'testimonials___section__testimonials___testimonials___id'
+  | 'testimonials___section__testimonials___testimonials___node_locale'
+  | 'testimonials___section__testimonials___testimonials___name'
+  | 'testimonials___section__testimonials___testimonials___section__testimonials'
+  | 'testimonials___section__testimonials___testimonials___spaceId'
+  | 'testimonials___section__testimonials___testimonials___createdAt'
+  | 'testimonials___section__testimonials___testimonials___updatedAt'
+  | 'testimonials___section__testimonials___testimonials___childrenContentfulTestimonialQuoteTextNode'
+  | 'testimonials___section__testimonials___testimonials___children'
+  | 'testimonials___section__testimonials___page'
+  | 'testimonials___section__testimonials___page___contentful_id'
+  | 'testimonials___section__testimonials___page___id'
+  | 'testimonials___section__testimonials___page___node_locale'
+  | 'testimonials___section__testimonials___page___internalName'
+  | 'testimonials___section__testimonials___page___spaceId'
+  | 'testimonials___section__testimonials___page___createdAt'
+  | 'testimonials___section__testimonials___page___updatedAt'
+  | 'testimonials___section__testimonials___page___children'
+  | 'testimonials___section__testimonials___spaceId'
+  | 'testimonials___section__testimonials___createdAt'
+  | 'testimonials___section__testimonials___updatedAt'
+  | 'testimonials___section__testimonials___sys___type'
+  | 'testimonials___section__testimonials___sys___revision'
+  | 'testimonials___section__testimonials___parent___id'
+  | 'testimonials___section__testimonials___parent___children'
+  | 'testimonials___section__testimonials___children'
+  | 'testimonials___section__testimonials___children___id'
+  | 'testimonials___section__testimonials___children___children'
+  | 'testimonials___section__testimonials___internal___content'
+  | 'testimonials___section__testimonials___internal___contentDigest'
+  | 'testimonials___section__testimonials___internal___description'
+  | 'testimonials___section__testimonials___internal___fieldOwners'
+  | 'testimonials___section__testimonials___internal___ignoreType'
+  | 'testimonials___section__testimonials___internal___mediaType'
+  | 'testimonials___section__testimonials___internal___owner'
+  | 'testimonials___section__testimonials___internal___type'
+  | 'testimonials___quote___id'
+  | 'testimonials___quote___parent___id'
+  | 'testimonials___quote___parent___children'
+  | 'testimonials___quote___children'
+  | 'testimonials___quote___children___id'
+  | 'testimonials___quote___children___children'
+  | 'testimonials___quote___internal___content'
+  | 'testimonials___quote___internal___contentDigest'
+  | 'testimonials___quote___internal___description'
+  | 'testimonials___quote___internal___fieldOwners'
+  | 'testimonials___quote___internal___ignoreType'
+  | 'testimonials___quote___internal___mediaType'
+  | 'testimonials___quote___internal___owner'
+  | 'testimonials___quote___internal___type'
+  | 'testimonials___quote___quote'
+  | 'testimonials___quote___sys___type'
+  | 'testimonials___spaceId'
+  | 'testimonials___createdAt'
+  | 'testimonials___updatedAt'
+  | 'testimonials___sys___type'
+  | 'testimonials___sys___revision'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___id'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___parent___id'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___parent___children'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___children'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___children___id'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___children___children'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___content'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___contentDigest'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___description'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___fieldOwners'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___ignoreType'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___mediaType'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___owner'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___internal___type'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___quote'
+  | 'testimonials___childrenContentfulTestimonialQuoteTextNode___sys___type'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___id'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___parent___id'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___parent___children'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___children'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___children___id'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___children___children'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___content'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___contentDigest'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___description'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___fieldOwners'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___ignoreType'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___mediaType'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___owner'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___internal___type'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___quote'
+  | 'testimonials___childContentfulTestimonialQuoteTextNode___sys___type'
+  | 'testimonials___parent___id'
+  | 'testimonials___parent___parent___id'
+  | 'testimonials___parent___parent___children'
+  | 'testimonials___parent___children'
+  | 'testimonials___parent___children___id'
+  | 'testimonials___parent___children___children'
+  | 'testimonials___parent___internal___content'
+  | 'testimonials___parent___internal___contentDigest'
+  | 'testimonials___parent___internal___description'
+  | 'testimonials___parent___internal___fieldOwners'
+  | 'testimonials___parent___internal___ignoreType'
+  | 'testimonials___parent___internal___mediaType'
+  | 'testimonials___parent___internal___owner'
+  | 'testimonials___parent___internal___type'
+  | 'testimonials___children'
+  | 'testimonials___children___id'
+  | 'testimonials___children___parent___id'
+  | 'testimonials___children___parent___children'
+  | 'testimonials___children___children'
+  | 'testimonials___children___children___id'
+  | 'testimonials___children___children___children'
+  | 'testimonials___children___internal___content'
+  | 'testimonials___children___internal___contentDigest'
+  | 'testimonials___children___internal___description'
+  | 'testimonials___children___internal___fieldOwners'
+  | 'testimonials___children___internal___ignoreType'
+  | 'testimonials___children___internal___mediaType'
+  | 'testimonials___children___internal___owner'
+  | 'testimonials___children___internal___type'
+  | 'testimonials___internal___content'
+  | 'testimonials___internal___contentDigest'
+  | 'testimonials___internal___description'
+  | 'testimonials___internal___fieldOwners'
+  | 'testimonials___internal___ignoreType'
+  | 'testimonials___internal___mediaType'
+  | 'testimonials___internal___owner'
+  | 'testimonials___internal___type'
+  | 'page'
+  | 'page___contentful_id'
+  | 'page___id'
+  | 'page___node_locale'
+  | 'page___internalName'
+  | 'page___spaceId'
+  | 'page___createdAt'
+  | 'page___updatedAt'
+  | 'page___sys___type'
+  | 'page___sys___revision'
+  | 'page___parent___id'
+  | 'page___parent___parent___id'
+  | 'page___parent___parent___children'
+  | 'page___parent___children'
+  | 'page___parent___children___id'
+  | 'page___parent___children___children'
+  | 'page___parent___internal___content'
+  | 'page___parent___internal___contentDigest'
+  | 'page___parent___internal___description'
+  | 'page___parent___internal___fieldOwners'
+  | 'page___parent___internal___ignoreType'
+  | 'page___parent___internal___mediaType'
+  | 'page___parent___internal___owner'
+  | 'page___parent___internal___type'
+  | 'page___children'
+  | 'page___children___id'
+  | 'page___children___parent___id'
+  | 'page___children___parent___children'
+  | 'page___children___children'
+  | 'page___children___children___id'
+  | 'page___children___children___children'
+  | 'page___children___internal___content'
+  | 'page___children___internal___contentDigest'
+  | 'page___children___internal___description'
+  | 'page___children___internal___fieldOwners'
+  | 'page___children___internal___ignoreType'
+  | 'page___children___internal___mediaType'
+  | 'page___children___internal___owner'
+  | 'page___children___internal___type'
+  | 'page___internal___content'
+  | 'page___internal___contentDigest'
+  | 'page___internal___description'
+  | 'page___internal___fieldOwners'
+  | 'page___internal___ignoreType'
+  | 'page___internal___mediaType'
+  | 'page___internal___owner'
+  | 'page___internal___type'
+  | 'spaceId'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___type'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type ContentfulSectionTestimonialsGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulSectionTestimonialsEdge>;
+  nodes: Array<ContentfulSectionTestimonials>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ContentfulSectionTestimonialsGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulSectionTestimonialsGroupConnectionDistinctArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsGroupConnectionMaxArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsGroupConnectionMinArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsGroupConnectionSumArgs = {
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+
+export type ContentfulSectionTestimonialsGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulSectionTestimonialsFieldsEnum;
+};
+
+export type ContentfulSectionTestimonialsSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulSectionTestimonialsFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type ContentfulSectionSamplesConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulSectionSamplesEdge>;
+  nodes: Array<ContentfulSectionSamples>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ContentfulSectionSamplesGroupConnection>;
+};
+
+
+export type ContentfulSectionSamplesConnectionDistinctArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesConnectionMaxArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesConnectionMinArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesConnectionSumArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+export type ContentfulSectionSamplesEdge = {
+  next?: Maybe<ContentfulSectionSamples>;
+  node: ContentfulSectionSamples;
+  previous?: Maybe<ContentfulSectionSamples>;
+};
+
+export type ContentfulSectionSamplesFieldsEnum =
+  | 'contentful_id'
+  | 'id'
+  | 'node_locale'
+  | 'heading'
+  | 'songs'
+  | 'songs___contentful_id'
+  | 'songs___id'
+  | 'songs___node_locale'
+  | 'songs___title'
+  | 'songs___artist'
+  | 'songs___artwork___contentful_id'
+  | 'songs___artwork___id'
+  | 'songs___artwork___spaceId'
+  | 'songs___artwork___createdAt'
+  | 'songs___artwork___updatedAt'
+  | 'songs___artwork___file___url'
+  | 'songs___artwork___file___fileName'
+  | 'songs___artwork___file___contentType'
+  | 'songs___artwork___title'
+  | 'songs___artwork___description'
+  | 'songs___artwork___node_locale'
+  | 'songs___artwork___sys___type'
+  | 'songs___artwork___sys___revision'
+  | 'songs___artwork___fixed___base64'
+  | 'songs___artwork___fixed___tracedSVG'
+  | 'songs___artwork___fixed___aspectRatio'
+  | 'songs___artwork___fixed___width'
+  | 'songs___artwork___fixed___height'
+  | 'songs___artwork___fixed___src'
+  | 'songs___artwork___fixed___srcSet'
+  | 'songs___artwork___fixed___srcWebp'
+  | 'songs___artwork___fixed___srcSetWebp'
+  | 'songs___artwork___fluid___base64'
+  | 'songs___artwork___fluid___tracedSVG'
+  | 'songs___artwork___fluid___aspectRatio'
+  | 'songs___artwork___fluid___src'
+  | 'songs___artwork___fluid___srcSet'
+  | 'songs___artwork___fluid___srcWebp'
+  | 'songs___artwork___fluid___srcSetWebp'
+  | 'songs___artwork___fluid___sizes'
+  | 'songs___artwork___gatsbyImageData'
+  | 'songs___artwork___resize___base64'
+  | 'songs___artwork___resize___tracedSVG'
+  | 'songs___artwork___resize___src'
+  | 'songs___artwork___resize___width'
+  | 'songs___artwork___resize___height'
+  | 'songs___artwork___resize___aspectRatio'
+  | 'songs___artwork___parent___id'
+  | 'songs___artwork___parent___children'
+  | 'songs___artwork___children'
+  | 'songs___artwork___children___id'
+  | 'songs___artwork___children___children'
+  | 'songs___artwork___internal___content'
+  | 'songs___artwork___internal___contentDigest'
+  | 'songs___artwork___internal___description'
+  | 'songs___artwork___internal___fieldOwners'
+  | 'songs___artwork___internal___ignoreType'
+  | 'songs___artwork___internal___mediaType'
+  | 'songs___artwork___internal___owner'
+  | 'songs___artwork___internal___type'
+  | 'songs___track___contentful_id'
+  | 'songs___track___id'
+  | 'songs___track___spaceId'
+  | 'songs___track___createdAt'
+  | 'songs___track___updatedAt'
+  | 'songs___track___file___url'
+  | 'songs___track___file___fileName'
+  | 'songs___track___file___contentType'
+  | 'songs___track___title'
+  | 'songs___track___description'
+  | 'songs___track___node_locale'
+  | 'songs___track___sys___type'
+  | 'songs___track___sys___revision'
+  | 'songs___track___fixed___base64'
+  | 'songs___track___fixed___tracedSVG'
+  | 'songs___track___fixed___aspectRatio'
+  | 'songs___track___fixed___width'
+  | 'songs___track___fixed___height'
+  | 'songs___track___fixed___src'
+  | 'songs___track___fixed___srcSet'
+  | 'songs___track___fixed___srcWebp'
+  | 'songs___track___fixed___srcSetWebp'
+  | 'songs___track___fluid___base64'
+  | 'songs___track___fluid___tracedSVG'
+  | 'songs___track___fluid___aspectRatio'
+  | 'songs___track___fluid___src'
+  | 'songs___track___fluid___srcSet'
+  | 'songs___track___fluid___srcWebp'
+  | 'songs___track___fluid___srcSetWebp'
+  | 'songs___track___fluid___sizes'
+  | 'songs___track___gatsbyImageData'
+  | 'songs___track___resize___base64'
+  | 'songs___track___resize___tracedSVG'
+  | 'songs___track___resize___src'
+  | 'songs___track___resize___width'
+  | 'songs___track___resize___height'
+  | 'songs___track___resize___aspectRatio'
+  | 'songs___track___parent___id'
+  | 'songs___track___parent___children'
+  | 'songs___track___children'
+  | 'songs___track___children___id'
+  | 'songs___track___children___children'
+  | 'songs___track___internal___content'
+  | 'songs___track___internal___contentDigest'
+  | 'songs___track___internal___description'
+  | 'songs___track___internal___fieldOwners'
+  | 'songs___track___internal___ignoreType'
+  | 'songs___track___internal___mediaType'
+  | 'songs___track___internal___owner'
+  | 'songs___track___internal___type'
+  | 'songs___section__samples'
+  | 'songs___section__samples___contentful_id'
+  | 'songs___section__samples___id'
+  | 'songs___section__samples___node_locale'
+  | 'songs___section__samples___heading'
+  | 'songs___section__samples___songs'
+  | 'songs___section__samples___songs___contentful_id'
+  | 'songs___section__samples___songs___id'
+  | 'songs___section__samples___songs___node_locale'
+  | 'songs___section__samples___songs___title'
+  | 'songs___section__samples___songs___artist'
+  | 'songs___section__samples___songs___section__samples'
+  | 'songs___section__samples___songs___spaceId'
+  | 'songs___section__samples___songs___createdAt'
+  | 'songs___section__samples___songs___updatedAt'
+  | 'songs___section__samples___songs___children'
+  | 'songs___section__samples___page'
+  | 'songs___section__samples___page___contentful_id'
+  | 'songs___section__samples___page___id'
+  | 'songs___section__samples___page___node_locale'
+  | 'songs___section__samples___page___internalName'
+  | 'songs___section__samples___page___spaceId'
+  | 'songs___section__samples___page___createdAt'
+  | 'songs___section__samples___page___updatedAt'
+  | 'songs___section__samples___page___children'
+  | 'songs___section__samples___spaceId'
+  | 'songs___section__samples___createdAt'
+  | 'songs___section__samples___updatedAt'
+  | 'songs___section__samples___sys___type'
+  | 'songs___section__samples___sys___revision'
+  | 'songs___section__samples___parent___id'
+  | 'songs___section__samples___parent___children'
+  | 'songs___section__samples___children'
+  | 'songs___section__samples___children___id'
+  | 'songs___section__samples___children___children'
+  | 'songs___section__samples___internal___content'
+  | 'songs___section__samples___internal___contentDigest'
+  | 'songs___section__samples___internal___description'
+  | 'songs___section__samples___internal___fieldOwners'
+  | 'songs___section__samples___internal___ignoreType'
+  | 'songs___section__samples___internal___mediaType'
+  | 'songs___section__samples___internal___owner'
+  | 'songs___section__samples___internal___type'
+  | 'songs___spaceId'
+  | 'songs___createdAt'
+  | 'songs___updatedAt'
+  | 'songs___sys___type'
+  | 'songs___sys___revision'
+  | 'songs___parent___id'
+  | 'songs___parent___parent___id'
+  | 'songs___parent___parent___children'
+  | 'songs___parent___children'
+  | 'songs___parent___children___id'
+  | 'songs___parent___children___children'
+  | 'songs___parent___internal___content'
+  | 'songs___parent___internal___contentDigest'
+  | 'songs___parent___internal___description'
+  | 'songs___parent___internal___fieldOwners'
+  | 'songs___parent___internal___ignoreType'
+  | 'songs___parent___internal___mediaType'
+  | 'songs___parent___internal___owner'
+  | 'songs___parent___internal___type'
+  | 'songs___children'
+  | 'songs___children___id'
+  | 'songs___children___parent___id'
+  | 'songs___children___parent___children'
+  | 'songs___children___children'
+  | 'songs___children___children___id'
+  | 'songs___children___children___children'
+  | 'songs___children___internal___content'
+  | 'songs___children___internal___contentDigest'
+  | 'songs___children___internal___description'
+  | 'songs___children___internal___fieldOwners'
+  | 'songs___children___internal___ignoreType'
+  | 'songs___children___internal___mediaType'
+  | 'songs___children___internal___owner'
+  | 'songs___children___internal___type'
+  | 'songs___internal___content'
+  | 'songs___internal___contentDigest'
+  | 'songs___internal___description'
+  | 'songs___internal___fieldOwners'
+  | 'songs___internal___ignoreType'
+  | 'songs___internal___mediaType'
+  | 'songs___internal___owner'
+  | 'songs___internal___type'
+  | 'page'
+  | 'page___contentful_id'
+  | 'page___id'
+  | 'page___node_locale'
+  | 'page___internalName'
+  | 'page___spaceId'
+  | 'page___createdAt'
+  | 'page___updatedAt'
+  | 'page___sys___type'
+  | 'page___sys___revision'
+  | 'page___parent___id'
+  | 'page___parent___parent___id'
+  | 'page___parent___parent___children'
+  | 'page___parent___children'
+  | 'page___parent___children___id'
+  | 'page___parent___children___children'
+  | 'page___parent___internal___content'
+  | 'page___parent___internal___contentDigest'
+  | 'page___parent___internal___description'
+  | 'page___parent___internal___fieldOwners'
+  | 'page___parent___internal___ignoreType'
+  | 'page___parent___internal___mediaType'
+  | 'page___parent___internal___owner'
+  | 'page___parent___internal___type'
+  | 'page___children'
+  | 'page___children___id'
+  | 'page___children___parent___id'
+  | 'page___children___parent___children'
+  | 'page___children___children'
+  | 'page___children___children___id'
+  | 'page___children___children___children'
+  | 'page___children___internal___content'
+  | 'page___children___internal___contentDigest'
+  | 'page___children___internal___description'
+  | 'page___children___internal___fieldOwners'
+  | 'page___children___internal___ignoreType'
+  | 'page___children___internal___mediaType'
+  | 'page___children___internal___owner'
+  | 'page___children___internal___type'
+  | 'page___internal___content'
+  | 'page___internal___contentDigest'
+  | 'page___internal___description'
+  | 'page___internal___fieldOwners'
+  | 'page___internal___ignoreType'
+  | 'page___internal___mediaType'
+  | 'page___internal___owner'
+  | 'page___internal___type'
+  | 'spaceId'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___type'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type ContentfulSectionSamplesGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulSectionSamplesEdge>;
+  nodes: Array<ContentfulSectionSamples>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ContentfulSectionSamplesGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulSectionSamplesGroupConnectionDistinctArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesGroupConnectionMaxArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesGroupConnectionMinArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesGroupConnectionSumArgs = {
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+
+export type ContentfulSectionSamplesGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulSectionSamplesFieldsEnum;
+};
+
+export type ContentfulSectionSamplesSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulSectionSamplesFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type ContentfulSectionContactSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulSectionContactSysContentTypeFilterInput>;
+};
+
+export type ContentfulSectionContactSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulSectionContactSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulSectionContactSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulSectionContactConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulSectionContactEdge>;
+  nodes: Array<ContentfulSectionContact>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ContentfulSectionContactGroupConnection>;
+};
+
+
+export type ContentfulSectionContactConnectionDistinctArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactConnectionMaxArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactConnectionMinArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactConnectionSumArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+export type ContentfulSectionContactEdge = {
+  next?: Maybe<ContentfulSectionContact>;
+  node: ContentfulSectionContact;
+  previous?: Maybe<ContentfulSectionContact>;
+};
+
+export type ContentfulSectionContactFieldsEnum =
+  | 'contentful_id'
+  | 'id'
+  | 'node_locale'
+  | 'heading'
+  | 'page'
+  | 'page___contentful_id'
+  | 'page___id'
+  | 'page___node_locale'
+  | 'page___internalName'
+  | 'page___spaceId'
+  | 'page___createdAt'
+  | 'page___updatedAt'
+  | 'page___sys___type'
+  | 'page___sys___revision'
+  | 'page___parent___id'
+  | 'page___parent___parent___id'
+  | 'page___parent___parent___children'
+  | 'page___parent___children'
+  | 'page___parent___children___id'
+  | 'page___parent___children___children'
+  | 'page___parent___internal___content'
+  | 'page___parent___internal___contentDigest'
+  | 'page___parent___internal___description'
+  | 'page___parent___internal___fieldOwners'
+  | 'page___parent___internal___ignoreType'
+  | 'page___parent___internal___mediaType'
+  | 'page___parent___internal___owner'
+  | 'page___parent___internal___type'
+  | 'page___children'
+  | 'page___children___id'
+  | 'page___children___parent___id'
+  | 'page___children___parent___children'
+  | 'page___children___children'
+  | 'page___children___children___id'
+  | 'page___children___children___children'
+  | 'page___children___internal___content'
+  | 'page___children___internal___contentDigest'
+  | 'page___children___internal___description'
+  | 'page___children___internal___fieldOwners'
+  | 'page___children___internal___ignoreType'
+  | 'page___children___internal___mediaType'
+  | 'page___children___internal___owner'
+  | 'page___children___internal___type'
+  | 'page___internal___content'
+  | 'page___internal___contentDigest'
+  | 'page___internal___description'
+  | 'page___internal___fieldOwners'
+  | 'page___internal___ignoreType'
+  | 'page___internal___mediaType'
+  | 'page___internal___owner'
+  | 'page___internal___type'
+  | 'spaceId'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___type'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type ContentfulSectionContactGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulSectionContactEdge>;
+  nodes: Array<ContentfulSectionContact>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ContentfulSectionContactGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulSectionContactGroupConnectionDistinctArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactGroupConnectionMaxArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactGroupConnectionMinArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactGroupConnectionSumArgs = {
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+
+export type ContentfulSectionContactGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulSectionContactFieldsEnum;
+};
+
+export type ContentfulSectionContactFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  heading?: Maybe<StringQueryOperatorInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulSectionContactSysFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+export type ContentfulSectionContactSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulSectionContactFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 export type ContentfulTestimonialQuoteTextNodeConnection = {
   totalCount: Scalars['Int'];
   edges: Array<ContentfulTestimonialQuoteTextNodeEdge>;
@@ -7975,30 +9738,37 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<{ menuLinks?
 export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_3_Query = { allContentfulSong: { nodes: Array<(
-      Pick<ContentfulSong, 'id' | 'title' | 'artist'>
-      & { track?: Maybe<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, artwork?: Maybe<{ fixed?: Maybe<Pick<ContentfulFixed, 'src' | 'srcSet'>> }> }
-    )> } };
+export type Unnamed_3_Query = { file?: Maybe<Pick<File, 'publicURL'>> };
 
 export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_4_Query = { file?: Maybe<Pick<File, 'publicURL'>> };
+export type Unnamed_4_Query = { site?: Maybe<{ siteMetadata?: Maybe<{ socialLinks?: Maybe<Array<Maybe<Pick<SiteSiteMetadataSocialLinks, 'name' | 'link'>>>> }> }> };
 
 export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_5_Query = { site?: Maybe<{ siteMetadata?: Maybe<{ socialLinks?: Maybe<Array<Maybe<Pick<SiteSiteMetadataSocialLinks, 'name' | 'link'>>>> }> }> };
+export type Unnamed_5_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_6_Query = { allContentfulTestimonial: { nodes: Array<(
-      Pick<ContentfulTestimonial, 'id' | 'name'>
-      & { quote?: Maybe<Pick<ContentfulTestimonialQuoteTextNode, 'quote'>>, image?: Maybe<{ fixed?: Maybe<Pick<ContentfulFixed, 'width' | 'height' | 'src' | 'srcSet'>> }> }
-    )> } };
-
-export type Unnamed_7_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_7_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+export type Unnamed_6_Query = { contentfulPage?: Maybe<{ sections?: Maybe<Array<Maybe<(
+      Pick<ContentfulSectionAbout, 'heading' | 'subheading'>
+      & { description?: Maybe<Pick<ContentfulSectionAboutDescription, 'raw'>>, photo?: Maybe<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }> }
+    ) | Pick<ContentfulSectionContact, 'heading'> | Pick<ContentfulSectionHero, 'heading' | 'subheading'> | (
+      Pick<ContentfulSectionSamples, 'heading'>
+      & { songs?: Maybe<Array<Maybe<(
+        Pick<ContentfulSong, 'artist' | 'title' | 'id'>
+        & { track?: Maybe<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, artwork?: Maybe<{ fixed?: Maybe<Pick<ContentfulFixed, 'srcSet'>> }> }
+      )>>> }
+    ) | (
+      Pick<ContentfulSectionServices, 'id' | 'heading'>
+      & { service?: Maybe<Array<Maybe<Pick<ContentfulService, 'name' | 'feature'>>>> }
+    ) | (
+      Pick<ContentfulSectionTestimonials, 'heading'>
+      & { testimonials?: Maybe<Array<Maybe<(
+        Pick<ContentfulTestimonial, 'id' | 'name'>
+        & { quote?: Maybe<Pick<ContentfulTestimonialQuoteTextNode, 'quote'>>, image?: Maybe<{ fixed?: Maybe<Pick<ContentfulFixed, 'srcSet'>> }> }
+      )>>> }
+    )>>> }> };

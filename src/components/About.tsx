@@ -1,13 +1,25 @@
 import { css } from "@emotion/react"
 import React from "react"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Heading from "./Heading"
 import Subheading from "./Subheading"
 import Container from "./Container"
 import SocialLinks from "./SocialLinks"
 import Iceberg from "../images/svg/iceberg.svg"
 import AaronPortrait from "../images/aaron_portrait.jpg"
+import { ContentfulSectionAbout } from "../../graphql-types"
 
-const About: React.FC<{}> = () => {
+const About: React.FC<Partial<ContentfulSectionAbout>> = ({
+  heading,
+  subheading,
+  description: desc,
+  photo,
+}) => {
+  const src = photo?.file?.url || AaronPortrait
+  //@ts-ignore
+  const description = desc?.raw
+    ? documentToReactComponents(JSON.parse(desc?.raw))
+    : ""
   return (
     <section id="about" css={css``}>
       <Iceberg
@@ -20,8 +32,8 @@ const About: React.FC<{}> = () => {
           padding: 96px 0;
         `}
       >
-        <Heading size={2}>I'm Aaron Bito</Heading>
-        <Subheading>Nice to Meet You</Subheading>
+        <Heading size={2}>{heading}</Heading>
+        <Subheading>{subheading}</Subheading>
         <div
           css={css`
             display: flex;
@@ -34,13 +46,10 @@ const About: React.FC<{}> = () => {
               max-width: 550px;
             `}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non
-            diam ut tellus feugiat interdum ac ut mauris. Proin maximus sodales
-            nunc, non vehicula risus consequat id. Vestibulum vestibulum ex sed
-            sem ullamcorper, non posuere diam pharetra.
+            {description}
           </p>
           <img
-            src={AaronPortrait}
+            src={src}
             alt="Aaron Bito"
             css={css`
               width: 375px;

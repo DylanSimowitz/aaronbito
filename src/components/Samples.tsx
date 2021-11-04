@@ -1,10 +1,14 @@
 import { css } from "@emotion/react"
 import React from "react"
+import { ContentfulSectionSamples, ContentfulSong } from "../../graphql-types"
 import Container from "./Container"
 import Heading from "./Heading"
 import { Player } from "./Player"
 
-export const Samples: React.FC<{}> = () => {
+export const Samples: React.FC<ContentfulSectionSamples> = ({
+  heading,
+  songs,
+}) => {
   return (
     <section
       css={css`
@@ -19,10 +23,10 @@ export const Samples: React.FC<{}> = () => {
           `}
         >
           <Heading size={2} center>
-            Listen for Yourself
+            {heading}
           </Heading>
         </div>
-        <Player />
+        <Player songs={songs as ContentfulSong[]} />
       </Container>
     </section>
   )

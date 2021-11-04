@@ -4,7 +4,10 @@ import React, { forwardRef } from "react"
 import Container from "./Container"
 import Slider from "./Slider"
 import Heading from "./Heading"
-import { ContentfulTestimonial } from "../../graphql-types"
+import {
+  ContentfulSectionTestimonials,
+  ContentfulTestimonial,
+} from "../../graphql-types"
 import useSlider from "../hooks/useSlider"
 
 const Testimonial: React.FC<{ quote: string; name: string }> = forwardRef(
@@ -62,34 +65,19 @@ const Portrait: React.FC<{ active: boolean }> = ({ active, ...props }) => {
   return <img css={styles} {...props} />
 }
 
-const Testimonials: React.FC<{}> = () => {
-  const {
-    allContentfulTestimonial: { nodes: testimonials },
-  } = useStaticQuery<ContentfulTestimonial[]>(graphql`
-    {
-      allContentfulTestimonial {
-        nodes {
-          id
-          name
-          quote {
-            quote
-          }
-          image {
-            fixed(width: 400) {
-              width
-              height
-              src
-              srcSet
-            }
-          }
-        }
-      }
-    }
-  `)
+const Testimonials: React.FC<ContentfulSectionTestimonials> = ({
+  heading,
+  testimonials,
+}) => {
+  if (!testimonials) return <div>Testimonials not set up properly</div>
 
-  const slides = testimonials.map(({ id, name, quote: { quote } }) => {
-    return <Testimonial name={name} quote={quote} key={id} data-id={id} />
-  })
+  const slides = (testimonials as ContentfulTestimonial[]).map(
+    ({ name, quote, id }) => {
+      return (
+        <Testimonial name={name!} quote={quote?.quote!} key={id} data-id={id} />
+      )
+    }
+  )
 
   const slider = useSlider(slides)
   const { selected, setSelected, Wrapper, parent } = slider
@@ -128,31 +116,21 @@ const Testimonials: React.FC<{}> = () => {
         padding-top: 100px;
       `}
     >
-      {testimonials.map(
-        (
-          {
-            id,
-            image: {
-              fixed: { srcSet },
-            },
-          },
-          idx
-        ) => {
-          return (
-            <Portrait
-              srcSet={srcSet}
-              key={id}
-              active={selected === id}
-              onClick={() => setSelected(id)}
-              css={css`
-                position: absolute;
-                z-index: 1;
-                ${positions[idx]}
-              `}
-            />
-          )
-        }
-      )}
+      {(testimonials as ContentfulTestimonial[]).map(({ id, image }, idx) => {
+        return (
+          <Portrait
+            srcSet={image?.fixed?.srcSet}
+            key={id}
+            active={selected === id}
+            onClick={() => setSelected(id)}
+            css={css`
+              position: absolute;
+              z-index: 1;
+              ${positions[idx]}
+            `}
+          />
+        )
+      })}
       <Container>
         <Heading
           size={2}
@@ -161,7 +139,7 @@ const Testimonials: React.FC<{}> = () => {
             line-height: 112px;
           `}
         >
-          Dozens of Satisfied Clients
+          {heading}
         </Heading>
         <Slider {...slider} ref={parent}>
           {Wrapper}

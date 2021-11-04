@@ -4,9 +4,13 @@ import Subheading from "./Subheading"
 import Container from "./Container"
 import ServiceCard from "./ServiceCard"
 import { useStaticQuery, graphql } from "gatsby"
+import { ContentfulSectionServices } from "../../graphql-types"
 
-const Services: React.FC<{}> = () => {
-  const services = ["Mixing", "Combo", "Mastering"]
+const Services: React.FC<ContentfulSectionServices> = ({
+  id,
+  heading,
+  service,
+}) => {
   const {
     file: { publicURL: backgroundURL },
   } = useStaticQuery(graphql`
@@ -38,11 +42,11 @@ const Services: React.FC<{}> = () => {
             margin: 164px 0;
           `}
         >
-          {services.map((item, idx) => (
+          {service!.map((item, idx) => (
             <ServiceCard
-              key={item}
-              id={item}
-              title={item}
+              key={item?.name!}
+              title={item?.name!}
+              features={item?.feature!}
               featured={idx === 1}
             />
           ))}

@@ -6,7 +6,10 @@ import CAB from "./CAB"
 import Container from "./Container"
 import Waveform from "../images/svg/waveform.svg"
 
-const Hero: React.FC<{}> = () => {
+const Hero: React.FC<{ heading?: string; subheading?: string }> = ({
+  heading,
+  subheading,
+}) => {
   return (
     <section
       css={css`
@@ -21,8 +24,8 @@ const Hero: React.FC<{}> = () => {
         `}
       />
       <Container>
-        <Heading>Level Up Your Mixes</Heading>
-        <Subheading>Professional Mixing & Remastering</Subheading>
+        <Heading>{heading}</Heading>
+        <Subheading>{subheading}</Subheading>
         <CAB
           css={css`
             margin-top: 80px;

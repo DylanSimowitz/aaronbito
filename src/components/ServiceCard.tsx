@@ -3,11 +3,11 @@ import React from "react"
 import Subheading from "./Subheading"
 import CAB from "./CAB"
 
-const ServiceCard: React.FC<{ title: string; featured?: boolean }> = ({
-  title,
-  featured,
-  ...props
-}) => {
+const ServiceCard: React.FC<{
+  title: string
+  features: string[]
+  featured?: boolean
+}> = ({ title, featured, features, ...props }) => {
   const baseStyles = css`
     width: 365px;
     height: 485px;
@@ -48,9 +48,9 @@ const ServiceCard: React.FC<{ title: string; featured?: boolean }> = ({
         `}
       >
         <ul>
-          <li>Lorem ipsum sit dolor amet</li>
-          <li>Lorem ipsum sit dolor amet</li>
-          <li>Lorem ipsum sit dolor amet</li>
+          {features.map(feature => (
+            <li>{feature}</li>
+          ))}
         </ul>
       </div>
       <CAB

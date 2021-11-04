@@ -1,41 +1,11 @@
 import { css } from "@emotion/react"
-import { useStaticQuery, graphql } from "gatsby"
-import {
-  GatsbyImage as Img,
-  getImage,
-  IGatsbyImageData,
-} from "gatsby-plugin-image"
+import { IGatsbyImageData } from "gatsby-plugin-image"
 import React, { useEffect, useRef, useState } from "react"
 import WaveSurfer from "wavesurfer.js"
 import PlayerControls from "./PlayerControls"
 import { ContentfulSong } from "../../graphql-types"
 
-export const Player: React.FC<{}> = () => {
-  const {
-    allContentfulSong: { nodes: songs },
-  } = useStaticQuery<ContentfulSong[]>(graphql`
-    {
-      allContentfulSong {
-        nodes {
-          id
-          title
-          artist
-          track {
-            file {
-              url
-            }
-          }
-          artwork {
-            fixed(width: 200) {
-              src
-              srcSet
-            }
-          }
-        }
-      }
-    }
-  `)
-
+export const Player: React.FC<{ songs: ContentfulSong[] }> = ({ songs }) => {
   const [currentTrack, setCurrentTrack] = useState(songs[0])
   const nextTrack = () => {
     setCurrentTrack(track => {
@@ -49,16 +19,6 @@ export const Player: React.FC<{}> = () => {
       return songs[(idx + (songs.length - 1)) % songs.length]
     })
   }
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
-  // songs.push(songs[0])
 
   return (
     <div
@@ -81,12 +41,12 @@ export const Player: React.FC<{}> = () => {
       `}
     >
       <div className="artwork">
-        <img srcSet={currentTrack.artwork.fixed.srcSet} />
+        <img srcSet={currentTrack.artwork?.fixed?.srcSet} />
       </div>
       <PlayerControls
-        title={currentTrack.title}
-        artist={currentTrack.artist}
-        src={currentTrack.track.file.url}
+        title={currentTrack.title!}
+        artist={currentTrack.artist!}
+        src={currentTrack.track?.file?.url!}
         next={nextTrack}
         previous={prevTrack}
       />
@@ -95,7 +55,7 @@ export const Player: React.FC<{}> = () => {
           grid-column: span 2;
           display: flex;
           flex-direction: column;
-          overflow: scroll;
+          overflow-y: auto;
         `}
       >
         {songs.map(song => {

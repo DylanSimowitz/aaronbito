@@ -3,6 +3,7 @@ import React, { forwardRef, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import Heading from "./Heading"
 import ReCaptcha from "./CaptchaButton"
+import { ContentfulSectionContact } from "../../graphql-types"
 
 function encode(data: any) {
   return Object.keys(data)
@@ -199,7 +200,13 @@ const Form: React.FC<{}> = ({ ...props }) => {
           `}
         >
           {["mixing", "mastering", "other"].map(service => (
-            <Input id={service} key={service} type="checkbox" value={service} {...register("service")}>
+            <Input
+              id={service}
+              key={service}
+              type="checkbox"
+              value={service}
+              {...register("service")}
+            >
               <label htmlFor={service}>{service}</label>
             </Input>
           ))}
@@ -236,7 +243,7 @@ const Form: React.FC<{}> = ({ ...props }) => {
   )
 }
 
-const Contact: React.FC<{}> = ({ ...props }) => {
+const Contact: React.FC<ContentfulSectionContact> = ({ heading }) => {
   return (
     <section
       css={css`
@@ -251,7 +258,7 @@ const Contact: React.FC<{}> = ({ ...props }) => {
           margin-bottom: 64px;
         `}
       >
-        Let's Work Together
+        {heading}
       </Heading>
       <Form />
     </section>
