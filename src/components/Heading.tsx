@@ -7,7 +7,7 @@ const Heading: React.FC<{ size?: number; center?: boolean }> = ({
   children,
   ...props
 }) => {
-  const sizes = { 1: 115, 2: 100 }
+  const sizes = { 1: 4.5, 2: 2 }
   return (
     <h1
       css={css`
@@ -17,14 +17,18 @@ const Heading: React.FC<{ size?: number; center?: boolean }> = ({
         padding-right: 4px;
         text-transform: uppercase;
         font-family: Raleway;
-        font-size: ${sizes[size]}px;
+        font-size: ${sizes[size]}em;
         font-style: normal;
         font-weight: 900;
-        line-height: 135px;
+        line-height: ${sizes[size] * 16}px;
         letter-spacing: -0.04em;
         text-align: ${center ? "center" : "left"};
         margin: 0;
         text-fill-color: transparent;
+        @media (min-width: 768px) {
+          font-size: ${sizes[size] * 1.5}em;
+          line-height: ${sizes[size] * 1.5 * 16}px;
+        }
       `}
       {...props}
     >

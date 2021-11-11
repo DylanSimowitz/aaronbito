@@ -19,9 +19,12 @@ const ServiceCard: React.FC<{
     display: flex;
     flex-direction: column;
     padding: 16px 30px;
+    order: 0;
+    text-align: center;
 
     ul {
       margin-top: 24px;
+      padding: 0;
     }
     li {
       margin-bottom: 24px;
@@ -29,9 +32,13 @@ const ServiceCard: React.FC<{
   `
 
   const featuredStyles = css`
-    transform: scale(1.25);
-    z-index: 5;
-    background: #1b1b1b;
+    order: 1;
+    @media (min-width: 1360px) {
+      background: #1b1b1b;
+      order: 0;
+      transform: scale(1.25);
+      z-index: 5;
+    }
   `
 
   const styles = [baseStyles]
@@ -45,6 +52,9 @@ const ServiceCard: React.FC<{
       <div
         css={css`
           flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         `}
       >
         <ul>

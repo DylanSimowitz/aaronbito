@@ -1,15 +1,19 @@
 import { css } from "@emotion/react"
 import React from "react"
 
-const Subheading: React.FC<{ light?: boolean, center?: boolean }> = ({ light, center, children }) => {
-const baseStyles = css`
+const Subheading: React.FC<{ light?: boolean; center?: boolean }> = ({
+  light,
+  center,
+  children,
+}) => {
+  const baseStyles = css`
     font-family: Poppins;
-    font-size: 48px;
+    font-size: 2.5em;
     font-style: normal;
     font-weight: 600;
-    line-height: 72px;
+    line-height: 42px;
     letter-spacing: -0.055em;
-    text-align: ${center ? 'center' : 'left'};
+    text-align: ${center ? "center" : "left"};
     color: #dadada;
     text-transform: lowercase;
     margin: 0;

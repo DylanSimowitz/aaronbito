@@ -12,7 +12,8 @@ export const Samples: React.FC<ContentfulSectionSamples> = ({
   return (
     <section
       css={css`
-        padding: 96px 0;
+        padding: 220px 0;
+        padding-bottom: 128px;
       `}
     >
       <Container>
@@ -22,7 +23,7 @@ export const Samples: React.FC<ContentfulSectionSamples> = ({
             margin-bottom: 32px;
           `}
         >
-          <Heading size={2} center>
+          <Heading size={1} center>
             {heading}
           </Heading>
         </div>

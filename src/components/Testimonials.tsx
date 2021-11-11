@@ -86,34 +86,54 @@ const Testimonials: React.FC<ContentfulSectionTestimonials> = ({
     css`
       top: -100px;
       right: -50px;
+      width: 300px;
+      height: 300px;
+      @media (min-width: 1360px) {
+        width: 400px;
+        height: 400px;
+      }
     `,
     css`
       bottom: 100px;
-      right: -50px;
+      right: -100px;
       width: 200px;
       height: 200px;
+      @media (min-width: 1024px) {
+        right: -50px;
+      }
     `,
     css`
-      bottom: 0px;
-      left: 30%;
+      bottom: -5%;
+      left: 20%;
       width: 150px;
       height: 150px;
+      @media (min-width: 1024px) {
+        bottom: 0px;
+      }
     `,
     css`
-      bottom: 20%;
-      left: -150px;
-      width: 300px;
-      height: 300px;
+      bottom: 15%;
+      left: -120px;
+      width: 240px;
+      height: 240px;
+      @media (min-width: 768px) {
+        bottom: 20%;
+        left: -150px;
+        width: 300px;
+        height: 300px;
+      }
     `,
   ]
 
   return (
     <section
+      id="testimonials"
       css={css`
         position: relative;
-        overflow: hidden;
-        padding-bottom: 300px;
-        padding-top: 100px;
+        max-width: 1600px;
+        margin: 0 auto;
+        overflow: visible;
+        padding: 120px 0;
       `}
     >
       {(testimonials as ContentfulTestimonial[]).map(({ id, image }, idx) => {
@@ -131,12 +151,18 @@ const Testimonials: React.FC<ContentfulSectionTestimonials> = ({
           />
         )
       })}
-      <Container>
+      <Container
+        css={css`
+          display: flex;
+          flex-wrap: wrap;
+        `}
+      >
         <Heading
-          size={2}
+          size={1}
           css={css`
             max-width: 80%;
-            line-height: 112px;
+            flex-basis: 100%;
+            z-index: 10;
           `}
         >
           {heading}

@@ -28,15 +28,20 @@ const Input: React.FC<{ as?: string }> = forwardRef(
             padding: 8px;
             border-radius: 8px;
             display: inline-block;
-            font-size: 1.15rem;
-            max-width: 210px;
-            height: 40px;
+            max-width: 200px;
+            font-size: 1em;
+            height: 36px;
             &::placeholder {
               color: var(--color-accent);
               opacity: 1;
-              font-size: 1.15rem;
+              font-size: inherit;
               font-weight: 400;
               text-transform: lowercase;
+            }
+            @media (min-width: 768px) {
+              max-width: 210px;
+              font-size: 1.15rem;
+              height: 40px;
             }
           }
           textarea {
@@ -126,16 +131,18 @@ const Form: React.FC<{}> = ({ ...props }) => {
       css={css`
         max-width: 800px;
         margin: 0 auto;
-        padding: 64px 88px;
         background: linear-gradient(black, black) padding-box,
           var(--gradient-container);
         border-radius: 36px;
         border: 4px solid transparent;
         box-shadow: -1.51472px 13.6325px 31.8091px 3.02944px
           rgba(255, 255, 255, 0.11);
+        padding: 48px 40px;
+        @media (min-width: 1024px) {
+          padding: 64px 88px;
+        }
         p {
           font-family: Poppins;
-          font-size: 32px;
           font-style: normal;
           font-weight: 500;
           line-height: 54px;
@@ -144,11 +151,16 @@ const Form: React.FC<{}> = ({ ...props }) => {
           display: inline-block;
           white-space: nowrap;
           margin: 0;
+          font-size: 1.6em;
+          @media (min-width: 768px) {
+            font-size: 2rem;
+          }
         }
         .row {
           display: flex;
           text-align: center;
           align-items: center;
+          flex-wrap: wrap;
         }
       `}
     >
@@ -247,11 +259,13 @@ const Contact: React.FC<ContentfulSectionContact> = ({ heading }) => {
   return (
     <section
       css={css`
+        margin: 0 10%;
         margin-top: 64px;
+        font-size: 80%;
       `}
     >
       <Heading
-        size={2}
+        size={1}
         css={css`
           display: block;
           text-align: center;

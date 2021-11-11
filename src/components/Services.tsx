@@ -25,9 +25,11 @@ const Services: React.FC<ContentfulSectionServices> = ({
       id="services"
       css={css`
         position: relative;
-        padding: 130px;
         background: url(${backgroundURL});
         background-size: cover;
+        padding: 130px 0;
+        @media (min-width: 1024px) {
+        }
       `}
     >
       <Container>
@@ -40,6 +42,16 @@ const Services: React.FC<ContentfulSectionServices> = ({
             align-items: center;
             justify-content: center;
             margin: 164px 0;
+            flex-direction: column;
+            > * {
+              margin: 48px 0;
+            }
+            @media (min-width: 1360px) {
+              flex-direction: row;
+              > * {
+                margin: 0;
+              }
+            }
           `}
         >
           {service!.map((item, idx) => (

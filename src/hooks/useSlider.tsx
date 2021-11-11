@@ -43,10 +43,10 @@ const useSlider = (slides, options = { autoplay: true }) => {
   //   $parent.insertBefore($firstClone, $last.nextSibling)
   // }, [])
   useLayoutEffect(() => {
-    parent.current.style.transform = "translateX(-800px)"
+    parent.current.style.transform = "translateX(calc(var(--slide-width)*-1))"
     parent.current.addEventListener("nextslide", () => {
       parent.current.style.transition = "transform 0.3s ease-in"
-      parent.current.style.transform = `translateX(-1600px)`
+      parent.current.style.transform = `translateX(calc(var(--slide-width)*-2))`
       parent.current.setAttribute("data-direction", "next")
     })
     parent.current.addEventListener("prevslide", () => {
@@ -56,7 +56,7 @@ const useSlider = (slides, options = { autoplay: true }) => {
     })
     parent.current.addEventListener("transitionend", () => {
       parent.current.style.transition = "none"
-      parent.current.style.transform = "translateX(-800px)"
+      parent.current.style.transform = "translateX(calc(var(--slide-width)*-1))"
       const direction = parent.current.getAttribute("data-direction")
       if (direction === "next") {
         setOffset(prevO => (prevO + 1) % count)

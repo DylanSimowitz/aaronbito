@@ -24,6 +24,7 @@ const Layout: React.FC<{}> = ({ children }) => {
             margin-top: 60px;
             color: #fff;
             background-color: #000;
+            overflow-x: hidden;
           }
           p {
             font-family: Poppins;
@@ -51,6 +52,9 @@ const Layout: React.FC<{}> = ({ children }) => {
             );
             --screen-xl: 1180px;
             --screen-lg: 960px;
+            --screen-md: 768px;
+            --screen-sm: 540px;
+            --screen-xs: 320px;
           }
           .grecaptcha-badge {
             visibility: hidden;

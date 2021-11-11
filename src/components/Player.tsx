@@ -24,23 +24,36 @@ export const Player: React.FC<{ songs: ContentfulSong[] }> = ({ songs }) => {
     <div
       css={css`
         height: 600px;
-        width: 952px;
+        width: 100%;
+        max-width: 960px;
         border-radius: 36px;
         border: 4px solid;
         display: grid;
         padding: 36px;
         grid-template:
-          "a b" auto
-          "c c" 1fr
-          / auto 1fr;
+          "a" auto
+          "b" 1fr
+          / 1fr;
         row-gap: 24px;
         margin: 0 auto;
         .artwork {
           padding: 16px;
         }
+        .artwork--big {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          grid-template:
+            "a b" auto
+            "c c" 1fr
+            / auto 1fr;
+          .artwork--big {
+            display: block;
+          }
+        }
       `}
     >
-      <div className="artwork">
+      <div className="artwork artwork--big">
         <img srcSet={currentTrack.artwork?.fixed?.srcSet} />
       </div>
       <PlayerControls

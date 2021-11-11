@@ -39,30 +39,56 @@ const About: React.FC<Partial<ContentfulSectionAbout>> = ({
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-direction: column;
+            margin: -24px 0;
+            > * {
+              margin: 24px 0;
+            }
+            @media (min-width: 1024px) {
+              flex-direction: row;
+              margin: 0 -24px;
+              > * {
+                margin: 0 24px;
+              }
+            }
           `}
         >
           <p
             css={css`
               max-width: 550px;
+              flex: 1 0;
+              @media (min-width: 1024px) {
+                flex-direction: row;
+                flex-basis: 550px;
+              }
             `}
           >
             {description}
           </p>
-          <img
-            src={src}
-            alt="Aaron Bito"
+          <div
             css={css`
-              width: 375px;
-              height: 375px;
-              border-radius: 50%;
+              flex: 0 1 375px;
+              max-width: 375px;
             `}
-          />
+          >
+            <img
+              src={src}
+              alt="Aaron Bito"
+              css={css`
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+              `}
+            />
+          </div>
         </div>
         <div
           css={css`
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin: 0 auto;
+            margin-top: 48px;
             width: 200px;
             fill: #fff;
 
@@ -75,6 +101,9 @@ const About: React.FC<Partial<ContentfulSectionAbout>> = ({
                   fill: var(--color-accent);
                 }
               }
+            }
+            @media (min-width: 1024px) {
+              margin: 0;
             }
           `}
         >
