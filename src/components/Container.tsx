@@ -5,8 +5,7 @@ const Container: React.FC<{}> = ({ children, ...props }) => {
   return (
     <div
       css={css`
-        margin: 0 10%;
-        overflow: hidden;
+        margin: 0 20px;
         @media (min-width: 1400px) {
           margin: 0 auto;
           max-width: var(--screen-xl);

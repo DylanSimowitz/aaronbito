@@ -69,7 +69,7 @@ const ServiceCard: React.FC<{
           margin: 0 auto;
         `}
       >
-        Get a Quote
+        <a href="#contact">Get a Quote</a>
       </CAB>
     </div>
   )

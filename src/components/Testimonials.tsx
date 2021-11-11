@@ -84,10 +84,16 @@ const Testimonials: React.FC<ContentfulSectionTestimonials> = ({
 
   const positions = [
     css`
-      top: -100px;
+      top: 10px;
       right: -50px;
-      width: 300px;
-      height: 300px;
+      width: 160px;
+      height: 160px;
+      @media (min-width: 768px) {
+        top: -100px;
+        right: -50px;
+        width: 300px;
+        height: 300px;
+      }
       @media (min-width: 1360px) {
         width: 400px;
         height: 400px;
@@ -95,27 +101,38 @@ const Testimonials: React.FC<ContentfulSectionTestimonials> = ({
     `,
     css`
       bottom: 100px;
-      right: -100px;
-      width: 200px;
-      height: 200px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      @media (min-width: 768px) {
+        bottom: 100px;
+        right: -100px;
+        width: 200px;
+        height: 200px;
+      }
       @media (min-width: 1024px) {
         right: -50px;
       }
     `,
     css`
       bottom: -5%;
-      left: 20%;
-      width: 150px;
-      height: 150px;
+      left: 10%;
+      width: 130px;
+      height: 130px;
+      @media (min-width: 768px) {
+        left: 20%;
+        width: 150px;
+        height: 150px;
+      }
       @media (min-width: 1024px) {
         bottom: 0px;
       }
     `,
     css`
       bottom: 15%;
-      left: -120px;
-      width: 240px;
-      height: 240px;
+      left: -20px;
+      width: 80px;
+      height: 80px;
       @media (min-width: 768px) {
         bottom: 20%;
         left: -150px;
@@ -160,9 +177,11 @@ const Testimonials: React.FC<ContentfulSectionTestimonials> = ({
         <Heading
           size={1}
           css={css`
-            max-width: 80%;
             flex-basis: 100%;
             z-index: 10;
+            @media (min-width: 768px) {
+              max-width: 80%;
+            }
           `}
         >
           {heading}

@@ -11,6 +11,7 @@ export const Samples: React.FC<ContentfulSectionSamples> = ({
 }) => {
   return (
     <section
+      id="samples"
       css={css`
         padding: 220px 0;
         padding-bottom: 128px;

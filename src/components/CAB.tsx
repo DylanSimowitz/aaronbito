@@ -20,6 +20,10 @@ const CAB: React.FC<{}> = ({ children, ...props }) => {
         background: transparent;
         color: #fff;
         cursor: pointer;
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
       `}
       {...props}
     >

@@ -65,7 +65,6 @@ const Footer: React.FC<{}> = () => {
               border-left: 1px solid #fff;
               list-style: none;
               margin: -12px 0;
-              padding: 0 128px 0 48px;
               font-family: Poppins;
               font-size: 24px;
               font-style: normal;
@@ -74,6 +73,10 @@ const Footer: React.FC<{}> = () => {
               letter-spacing: -0.055em;
               text-align: left;
               text-transform: lowercase;
+              padding: 0 48px 0 24px;
+              @media (min-width: 768px) {
+                padding: 0 128px 0 48px;
+              }
             `}
           >
             {menuLinks.map(item => (
@@ -100,7 +103,7 @@ const Footer: React.FC<{}> = () => {
           </ul>
           <div
             css={css`
-              padding-left: 48px;
+              padding-left: 24px;
               border-left: 1px solid #fff;
               display: flex;
               flex-direction: column;
@@ -118,6 +121,9 @@ const Footer: React.FC<{}> = () => {
               }
               svg {
                 fill: #fff;
+              }
+              @media (min-width: 768px) {
+                padding-left: 48px;
               }
             `}
           >

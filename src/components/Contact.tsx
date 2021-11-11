@@ -145,15 +145,17 @@ const Form: React.FC<{}> = ({ ...props }) => {
           font-family: Poppins;
           font-style: normal;
           font-weight: 500;
-          line-height: 54px;
           letter-spacing: 0em;
           text-align: left;
           display: inline-block;
-          white-space: nowrap;
-          margin: 0;
           font-size: 1.6em;
+          line-height: 34px;
+          margin: 16px 0;
           @media (min-width: 768px) {
             font-size: 2rem;
+            white-space: nowrap;
+            line-height: 54px;
+            margin: 0;
           }
         }
         .row {
@@ -258,8 +260,8 @@ const Form: React.FC<{}> = ({ ...props }) => {
 const Contact: React.FC<ContentfulSectionContact> = ({ heading }) => {
   return (
     <section
+      id="contact"
       css={css`
-        margin: 0 10%;
         margin-top: 64px;
         font-size: 80%;
       `}
